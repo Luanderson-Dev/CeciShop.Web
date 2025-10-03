@@ -3,12 +3,22 @@
 import type { NextConfig } from 'next';
 
 const config: NextConfig = {
-	// ... outras configurações do seu projeto podem estar aqui
+	// Configuração de imagens que já fizemos
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'via.placeholder.com',
+				port: '',
+				pathname: '/**',
+			},
+		],
+	},
 
+	// Suas outras configurações, como os headers, continuam aqui
 	async headers() {
 		return [
 			{
-				// Aplica estes cabeçalhos para todas as rotas da sua aplicação
 				source: '/:path*',
 				headers: [
 					{

@@ -4,22 +4,22 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-	if (request.nextUrl.pathname.startsWith('/unauthorized')) {
-		return NextResponse.next();
-	}
+	// if (request.nextUrl.pathname.startsWith('/unauthorized')) {
+	// 	return NextResponse.next();
+	// }
 
-	const allowedReferer = 'https://app.ceci.chat';
-	const referer = request.headers.get('referer');
+	// const allowedReferer = 'https://app.ceci.chat';
+	// const referer = request.headers.get('referer');
 
-	if (!referer || new URL(referer).origin !== allowedReferer) {
-		console.warn(
-			`[MIDDLEWARE] Bloqueado acesso com Referer: ${referer || 'Nenhum'}`
-		);
-		const unauthorizedUrl = new URL('/unauthorized', request.url);
-		return NextResponse.redirect(unauthorizedUrl);
-	}
+	// if (!referer || new URL(referer).origin !== allowedReferer) {
+	// 	console.warn(
+	// 		`[MIDDLEWARE] Bloqueado acesso com Referer: ${referer || 'Nenhum'}`
+	// 	);
+	// 	const unauthorizedUrl = new URL('/unauthorized', request.url);
+	// 	return NextResponse.redirect(unauthorizedUrl);
+	// }
 
-	console.log(`[MIDDLEWARE] Acesso permitido com Referer: ${referer}`);
+	// console.log(`[MIDDLEWARE] Acesso permitido com Referer: ${referer}`);
 	return NextResponse.next();
 }
 
